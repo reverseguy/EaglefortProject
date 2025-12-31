@@ -18,34 +18,16 @@ export interface User {
   joinDate: string;
   wishlist: string[];
   isAdmin?: boolean;
-  totalSpent?: number;
-}
-
-export interface Review {
-  id: string;
-  productId: string;
-  userId: string;
-  userName: string;
-  rating: number; // 1-5
-  comment: string;
-  date: string;
-}
-
-export interface AuditLog {
-  id: string;
-  action: string;
-  timestamp: string;
-  user: string;
 }
 
 export interface Order {
   id: string;
   userId: string;
-  items: string[];
+  items: { productId: string; name: string; quantity: number; price: number }[];
   total: number;
-  status: 'PROCESSING' | 'DELIVERED' | 'SHIPPED';
+  status: 'PROCESSING' | 'SHIPPED' | 'DELIVERED';
   date: string;
-  paymentMethod: 'NEURAL_CREDIT' | 'SIGNAL_TRANSFER';
+  paymentMethod: string;
 }
 
 export interface CartItem extends Product {
